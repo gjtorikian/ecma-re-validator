@@ -2,6 +2,8 @@
 
 Pass in a string to validate if it would work in ECMA-262, aka JavaScript.
 
+The information for what is valid and what isn't comes from <http://www.regular-expressions.info/javascript.html>.
+
 ## Usage
 
 ``` ruby
