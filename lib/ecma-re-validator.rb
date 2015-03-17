@@ -3,11 +3,11 @@ begin
 rescue LoadError; end
 
 module EcmaReValidator
-  def self.valid?(re)
-    return false unless re.is_a? String
+  def self.valid?(input)
+    return false unless input.is_a? String
     begin
-      Regexp.new(re)
-    rescue RegexpError => e
+      re = Regexp.new(input)
+    rescue RegexpError
       return false
     end
 
