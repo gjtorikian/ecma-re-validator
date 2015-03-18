@@ -3,21 +3,29 @@ begin
   require 'pry'
 rescue LoadError; end
 
-require 'ecma-re-validator/anchors'
-require 'ecma-re-validator/lookbehind'
+require 'regexp_parser'
 
 module EcmaReValidator
 
   def self.valid?(input)
     return false unless input.is_a? String
     begin
-      Regexp.new(input)
-    rescue RegexpError
+      re = Regexp.new(input)
+    rescue RegexpError => e
       return false
     end
 
-    return false unless Anchors.passes?(input)
-    return false unless Lookbehind.passes?(input)
-    true
+    tokens = Regexp::Scanner.scan(re)
+
+    items = []
+    tokens.each { |a| items << a[1] }
+
+    items.flatten!
+    items.none? do |i|
+      # JS doesn't have \A or \Z
+      i == :bos || i == :eos_ob_eol || \
+      # JS doesn't have lookbehinds
+      i == :lookbehind
+    end
   end
 end

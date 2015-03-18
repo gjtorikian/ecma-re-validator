@@ -28,7 +28,7 @@ describe 'EcmaReValidator::Anchors' do
   it 'should pass if regexp is escaped \A, with many backslashes' do
     re = 'moby\\\\\\\\A'
 
-    expect(EcmaReValidator.valid?(re)).to eql(false)
+    expect(EcmaReValidator.valid?(re)).to eql(true)
   end
 
   it 'should pass if regexp has no \Z' do
@@ -58,6 +58,6 @@ describe 'EcmaReValidator::Anchors' do
   it 'should pass if regexp is escaped \Z, with many backslashes' do
     re = 'moby\\\\\\\\Z'
 
-    expect(EcmaReValidator.valid?(re)).to eql(false)
+    expect(EcmaReValidator.valid?(re)).to eql(true)
   end
 end

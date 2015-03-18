@@ -13,9 +13,9 @@ describe 'EcmaReValidator::Lookbehind' do
     expect(EcmaReValidator.valid?(re)).to eql(false)
   end
 
-  it 'should pass if regexp has an escaped positive lookbehind' do
+  it 'should fail if regexp has an escaped positive lookbehind' do
     re = '(?<=a\\)b'
 
-    expect(EcmaReValidator.valid?(re)).to eql(true)
+    expect(EcmaReValidator.valid?(re)).to eql(false)
   end
 end
