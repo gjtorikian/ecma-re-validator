@@ -1,6 +1,6 @@
 module EcmaReValidator
   module Anchors
-    def self.passes?(input, _)
+    def self.passes?(input)
       !slash_a?(input) && !slash_z?(input)
     end
 
