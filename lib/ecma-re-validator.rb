@@ -12,7 +12,6 @@ module EcmaReValidator
       begin
         input = Regexp.new(input)
       rescue RegexpError => e
-        ap e
         return false
       end
     elsif !input.is_a? Regexp
@@ -29,7 +28,9 @@ module EcmaReValidator
       # JS doesn't have \A or \Z
       i == :bos || i == :eos_ob_eol || \
       # JS doesn't have lookbehinds
-      i == :lookbehind || i == :nlookbehind
+      i == :lookbehind || i == :nlookbehind || \
+      # JS doesn't have atomic groping
+      i == :atomic
     end
   end
 end
