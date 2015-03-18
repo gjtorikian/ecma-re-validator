@@ -8,14 +8,17 @@ require 'regexp_parser'
 module EcmaReValidator
 
   def self.valid?(input)
-    return false unless input.is_a? String
-    begin
-      re = Regexp.new(input)
-    rescue RegexpError => e
+    if input.is_a? String
+      begin
+        input = Regexp.new(input)
+      rescue RegexpError => e
+        return false
+      end
+    elsif !input.is_a? Regexp
       return false
     end
 
-    tokens = Regexp::Scanner.scan(re)
+    tokens = Regexp::Scanner.scan(input)
 
     items = []
     tokens.each { |a| items << a[1] }
