@@ -30,7 +30,10 @@ module EcmaReValidator
       # JS doesn't have lookbehinds
       i == :lookbehind || i == :nlookbehind || \
       # JS doesn't have atomic groping
-      i == :atomic
+      i == :atomic || \
+      # JS doesn't have possesive quantifiers
+      i == :zero_or_one_possessive || i == :zero_or_more_possessive || \
+      i == :one_or_more_possessive
     end
   end
 end
