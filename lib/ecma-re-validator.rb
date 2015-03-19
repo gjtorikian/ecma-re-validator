@@ -24,7 +24,9 @@ module EcmaReValidator
     # JS doesn't support modifying options
     :options,
     # JS doesn't support conditionals
-    :condition_open
+    :condition_open,
+    # JS doesn't support comments
+    :comment
   ]
 
   INVALID_TOKENS = INVALID_REGEXP + UNICODE_CHARACTERS
