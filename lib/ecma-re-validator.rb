@@ -20,7 +20,9 @@ module EcmaReValidator
     # JS doesn't have possesive quantifiers
     :zero_or_one_possessive, :zero_or_more_possessive, :one_or_more_possessive,
     # JS doesn't have named capture groups
-    :named_ab, :named_sq
+    :named_ab, :named_sq,
+    # JS doesn't support modifying options
+    :options
   ]
 
   INVALID_TOKENS = INVALID_REGEXP + UNICODE_CHARACTERS
@@ -29,17 +31,14 @@ module EcmaReValidator
     if input.is_a? String
       begin
         input = Regexp.new(input)
-      rescue RegexpError => e
+      rescue RegexpError
         return false
       end
     elsif !input.is_a? Regexp
       return false
     end
 
-    tokens = Regexp::Scanner.scan(input)
-
-    items = tokens.map { |t| t[1] }
-
-    (items & INVALID_TOKENS).empty?
+    tokens = Regexp::Scanner.scan(input).map { |t| ap t; t[1] }
+    (tokens & INVALID_TOKENS).empty?
   end
 end
