@@ -22,7 +22,9 @@ module EcmaReValidator
     # JS doesn't have named capture groups
     :named_ab, :named_sq,
     # JS doesn't support modifying options
-    :options
+    :options,
+    # JS doesn't support conditionals
+    :condition_open
   ]
 
   INVALID_TOKENS = INVALID_REGEXP + UNICODE_CHARACTERS
