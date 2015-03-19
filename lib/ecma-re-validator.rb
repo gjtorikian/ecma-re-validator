@@ -42,7 +42,6 @@ module EcmaReValidator
       return false
     end
 
-    tokens = Regexp::Scanner.scan(input).map { |t| ap t; t[1] }
-    (tokens & INVALID_TOKENS).empty?
+    Regexp::Scanner.scan(input).none? { |t| INVALID_TOKENS.include?(t[1]) }
   end
 end
