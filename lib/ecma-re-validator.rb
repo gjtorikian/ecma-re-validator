@@ -18,7 +18,9 @@ module EcmaReValidator
     # JS doesn't have atomic grouping
     :atomic,
     # JS doesn't have possesive quantifiers
-    :zero_or_one_possessive, :zero_or_more_possessive, :one_or_more_possessive
+    :zero_or_one_possessive, :zero_or_more_possessive, :one_or_more_possessive,
+    # JS doesn't have named capture groups
+    :named_ab, :named_sq
   ]
 
   INVALID_TOKENS = INVALID_REGEXP + UNICODE_CHARACTERS
