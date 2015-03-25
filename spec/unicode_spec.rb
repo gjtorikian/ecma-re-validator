@@ -95,4 +95,22 @@ describe 'EcmaReValidator::Unicode' do
 
     expect(EcmaReValidator.valid?(re)).to eql(true)
   end
+
+  it 'should pass if regexp uses a \w' do
+    re = /^\w+/
+
+    expect(EcmaReValidator.valid?(re)).to eql(true)
+  end
+
+  it 'should pass if regexp uses a \s' do
+    re = /\s*wow/
+
+    expect(EcmaReValidator.valid?(re)).to eql(true)
+  end
+
+  it 'should pass if regexp uses a \d' do
+    re = /\d$/
+
+    expect(EcmaReValidator.valid?(re)).to eql(true)
+  end
 end

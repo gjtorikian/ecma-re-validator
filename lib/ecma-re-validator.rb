@@ -42,6 +42,12 @@ module EcmaReValidator
       return false
     end
 
-    Regexp::Scanner.scan(input).none? { |t| INVALID_TOKENS.include?(t[1]) }
+    Regexp::Scanner.scan(input).none? do |t|
+      if t[1] == :word || t[1] == :space || t[1] == :digit
+        t[0] != :type
+      else
+        INVALID_TOKENS.include?(t[1])
+      end
+    end
   end
 end
