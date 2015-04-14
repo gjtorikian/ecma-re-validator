@@ -31,20 +31,14 @@ describe 'EcmaReValidator::Anchors' do
     expect(EcmaReValidator.valid?(re)).to eql(true)
   end
 
-  it 'should pass if regexp has no \Z' do
-    re = 'anchor'
-
-    expect(EcmaReValidator.valid?(re)).to eql(true)
-  end
-
   it 'should pass if regexp is escaped \Z' do
-    re = 'anchor\\\\A'
+    re = 'anchor\\\\Z'
 
     expect(EcmaReValidator.valid?(re)).to eql(true)
   end
 
   it 'should fail if regexp is not escaped \Z' do
-    re = 'anchor\\A'
+    re = 'anchor\\Z'
 
     expect(EcmaReValidator.valid?(re)).to eql(false)
   end
