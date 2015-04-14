@@ -11,8 +11,8 @@ module EcmaReValidator
   UNICODE_CHARACTERS = Regexp::Syntax::Token::UnicodeProperty::All
 
   INVALID_REGEXP = [
-    # JS doesn't have \A or \Z
-    :bos, :eos_ob_eol,
+    # JS doesn't have \A, \Z, \z
+    :bos, :eos_ob_eol, :eos,
     # JS doesn't have lookbehinds
     :lookbehind, :nlookbehind,
     # JS doesn't have atomic grouping

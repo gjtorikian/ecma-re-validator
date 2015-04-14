@@ -54,4 +54,28 @@ describe 'EcmaReValidator::Anchors' do
 
     expect(EcmaReValidator.valid?(re)).to eql(true)
   end
+
+  it 'should pass if regexp is escaped \z' do
+    re = 'anchor\\\\z'
+
+    expect(EcmaReValidator.valid?(re)).to eql(true)
+  end
+
+  it 'should fail if regexp is not escaped \z' do
+    re = 'anchor\\z'
+
+    expect(EcmaReValidator.valid?(re)).to eql(false)
+  end
+
+  it 'should fail if regexp is not escaped \z, despite backslashes' do
+    re = 'anchor\\\\\\z'
+
+    expect(EcmaReValidator.valid?(re)).to eql(false)
+  end
+
+  it 'should pass if regexp is escaped \z, with many backslashes' do
+    re = 'anchor\\\\\\\\z'
+
+    expect(EcmaReValidator.valid?(re)).to eql(true)
+  end
 end
