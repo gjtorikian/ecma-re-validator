@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe 'EcmaReValidator::Anchors' do
+  it 'should pass if regexp has ^' do
+    re = '^anchor'
+
+    expect(EcmaReValidator.valid?(re)).to eql(true)
+  end
+
+  it 'should pass if regexp has $' do
+    re = 'anchor$'
+
+    expect(EcmaReValidator.valid?(re)).to eql(true)
+  end
+
   it 'should pass if regexp has no \A' do
     re = 'anchor'
 
