@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %(Validate a regular expression string against what ECMA-262 can actually do.)
   gem.homepage      = 'https://github.com/gjtorikian/ecma-re-validator'
   gem.license       = 'MIT'
-  gem.files         = `git ls-files -z`.split("\x0")
+  gem.files         = `git ls-files -z`.split("\x0").reject{ |f| f =~ %r{^vendor/.*} }
   gem.test_files    = gem.files.grep(%r{^(spec)/})
   gem.require_paths = ['lib']
 
