@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'EcmaRe' do
@@ -14,7 +16,7 @@ describe 'EcmaRe' do
   end
 
   it 'passes for a valid regexp string' do
-    re = "[Ss]mith\\\\b"
+    re = '[Ss]mith\\\\b'
 
     expect(EcmaReValidator.valid?(re)).to eql(true)
   end
