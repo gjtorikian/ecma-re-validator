@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'bundler/setup'
-require_relative "../lib/ecma-re-validator"
+require_relative '../lib/ecma-re-validator'
 
 RSpec.configure do |config|
   # Use color in STDOUT

@@ -1,12 +1,8 @@
-begin
-  require 'awesome_print'
-  require 'pry'
-rescue LoadError; end
+# frozen_string_literal: true
 
 require 'regexp_parser'
 
 module EcmaReValidator
-
   # JS doesn't have Unicode matching
   UNICODE_CHARACTERS = Regexp::Syntax::Token::UnicodeProperty::All
 
@@ -27,7 +23,7 @@ module EcmaReValidator
     :condition_open,
     # JS doesn't support comments
     :comment
-  ]
+  ].freeze
 
   INVALID_TOKENS = INVALID_REGEXP + UNICODE_CHARACTERS
 

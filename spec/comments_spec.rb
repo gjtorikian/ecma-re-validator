@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'EcmaReValidator::Comments' do
@@ -8,15 +10,14 @@ describe 'EcmaReValidator::Comments' do
   end
 
   it 'should fail if regexp has inline comments across lines' do
-    re = %r{
+    re = /
           start         # some text
           \s            # white space char
           (group)       # first group
           (?:alt1|alt2) # some alternation
           end
-        }x
+        /x
 
     expect(EcmaReValidator.valid?(re)).to eql(false)
   end
-
 end
