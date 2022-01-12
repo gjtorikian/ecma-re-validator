@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(spec)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'regexp_parser', '~> 2.0'
+  gem.add_dependency 'regexp_parser', '~> 2.2'
 
   gem.add_development_dependency 'rspec', '~> 3.1'
   gem.add_development_dependency 'rake', '~> 13.0'
